@@ -34,17 +34,23 @@ public class CajerosServiceImpl implements CajerosService{
 	public List<Cajero> getAll() {
 	
 		final List<Cajero> cajeros = cajeroRepository.findAll();
-	//	cajeros.forEach(this::computeAddress);
+		//cajeros.forEach(this::computeAddress);
+		//cajeros.forEach(computeAddress);
 	        return cajeros;
 	}
 	@Override
 	    public void create(AltaCajeroFormulario form) {
-	         Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getCajero(),
+	        final Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getCajero(),
 	                                               form.getEmail(),
 	                                               new Direccion(form.getStreet(), form.getCity(), form.getCountry()),
 	                                               form.getRole(), form.getEstatus());
+	        if (employee.getAddress() != null && employee.getGeoLocation() == null && !employee.isGeoProcessed()) {
+	            geoLocationService.computeGeoLocation(employee.getAddress().toString())
+	                    .ifPresent(employee::setGeoLocation);
+	            cajeroRepository.save(employee);
+	        }
 	        
-	        cajeroRepository.save(employee);
+	       
 	    }
 	
 	 private void computeAddress(Empleados employee) {
