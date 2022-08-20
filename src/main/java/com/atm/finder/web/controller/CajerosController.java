@@ -39,7 +39,7 @@ public class CajerosController {
 	private String gmapsApiKey;
 
 	@GetMapping
-	public ModelAndView viewAllUsers() {
+	public ModelAndView VerTodosLosCajero() {
 //		public List<Empleado> viewAllUsers() {
 
 //		List<Cajero> employees = new ArrayList<Cajero>();
@@ -86,7 +86,7 @@ public class CajerosController {
 	}
 
 	@PostMapping
-	public ModelAndView createEmployee(@ModelAttribute AltaCajeroFormulario employeeForm) {
+	public ModelAndView AltaCajeros(@ModelAttribute AltaCajeroFormulario employeeForm) {
 		cajeroService.create(employeeForm);
 		return new ModelAndView("redirect:/");
 	}
