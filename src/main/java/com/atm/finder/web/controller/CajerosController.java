@@ -39,7 +39,7 @@ public class CajerosController {
 	private String gmapsApiKey;
 
 	@GetMapping
-	public ModelAndView VerTodosLosCajero() {
+	public ModelAndView returHtml() {
 //		public List<Empleado> viewAllUsers() {
 
 //		List<Cajero> employees = new ArrayList<Cajero>();
@@ -93,7 +93,7 @@ public class CajerosController {
 
 	@GetMapping("/api/cajeros")
 	@ResponseBody
-	public ResponseEntity<List<Cajero>> getAllUsers() {
+	public ResponseEntity<List<Cajero>> getAllCajeros() {
 //		List<Cajero> employees = new ArrayList<Cajero>();
 //
 //		Direccion domicilio = new Direccion();
@@ -122,8 +122,8 @@ public class CajerosController {
 //				rol, jobPosition, false));
 //		
 	
-		// final List<Cajero> employees = cajeroService.getAll().stream().filter(e->e.getGeoLocation() != null).collect(Collectors.toList());
-		 final List<Cajero> employees = cajeroService.getAll();
+		 final List<Cajero> employees = cajeroService.getAll().stream().filter(e->e.getGeoLocation() != null).collect(Collectors.toList());
+		// final List<Cajero> employees = cajeroService.getAll();
 		return ResponseEntity.ok(employees);
 	}
 

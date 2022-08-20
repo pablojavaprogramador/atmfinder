@@ -21,7 +21,7 @@ public class ApisController {
     @Autowired
     private CajerosService CajerosService;
 
-    @RequestMapping(value = "/cajeros", method = RequestMethod.GET)
+    @RequestMapping(value = "/allCajeros", method = RequestMethod.GET)
     List<Cajero>consultaCajeros(){
         return CajerosService.getAll();
     }
@@ -34,14 +34,14 @@ public class ApisController {
     
 
     @RequestMapping(produces=MediaType.APPLICATION_JSON_VALUE ,value = "/cajero", method = RequestMethod.POST)
-    public String agregarArticulo(@RequestBody Cajero articulo){
+    public String agregarCajero(@RequestBody Cajero articulo){
     	//Cajero salvarArticulo = CajerosService.save(articulo);
 
         return "{\"mensaje\":\"Cajero Guardado Correctamente\"}";
     }
     
     @RequestMapping(value = "/cajero", method = RequestMethod.PUT)
-    Cajero actualizarArticulo(@RequestBody Cajero articulo){
+    Cajero actualizarCajero(@RequestBody Cajero articulo){
 		return articulo;
 		
     	//Cajero actualizarArticulo = CajerosService.save(articulo);
