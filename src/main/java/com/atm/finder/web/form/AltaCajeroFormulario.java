@@ -12,7 +12,7 @@ import com.atm.finder.domain.Estatus;
 import com.atm.finder.domain.Role;
 
 @Data
-public class CreateEmployeeForm {
+public class AltaCajeroFormulario {
     private String firstName;
     private String lastName;
     private String cajero;

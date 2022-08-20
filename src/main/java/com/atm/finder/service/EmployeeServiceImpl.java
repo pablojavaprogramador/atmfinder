@@ -3,7 +3,7 @@ package com.atm.finder.service;
 import com.atm.finder.domain.Direccion;
 import com.atm.finder.domain.Empleados;
 import com.atm.finder.repository.EmployeeRepository;
-import com.atm.finder.web.form.CreateEmployeeForm;
+import com.atm.finder.web.form.AltaCajeroFormulario;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ class EmployeeServiceImpl implements EmployeeService {
     private final GeoLocationService geoLocationService = null;
 
     @Transactional
-    public void create(CreateEmployeeForm form) {
+    public void create(AltaCajeroFormulario form) {
         final Empleados employee = new Empleados(form.getFirstName(), form.getLastName(), form.getCajero(),
                                                form.getEmail(),
                                                new Direccion(form.getStreet(), form.getCity(), form.getCountry()),

@@ -17,7 +17,7 @@ import com.atm.finder.domain.Direccion;
 import com.atm.finder.domain.Empleados;
 import com.atm.finder.repository.CajeroRepository;
 import com.atm.finder.repository.EmployeeRepository;
-import com.atm.finder.web.form.CreateEmployeeForm;
+import com.atm.finder.web.form.AltaCajeroFormulario;
 
 import lombok.RequiredArgsConstructor;
 
@@ -38,7 +38,7 @@ public class CajerosServiceImpl implements CajerosService{
 	        return cajeros;
 	}
 	@Override
-	    public void create(CreateEmployeeForm form) {
+	    public void create(AltaCajeroFormulario form) {
 //	        final Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getUsername(),
 //	                                               form.getEmail(),
 //	                                               new Direccion(form.getStreet(), form.getCity(), form.getCountry()),

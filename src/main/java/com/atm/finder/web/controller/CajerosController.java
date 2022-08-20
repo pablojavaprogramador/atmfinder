@@ -8,7 +8,7 @@ import com.atm.finder.domain.Estatus;
 import com.atm.finder.domain.Role;
 import com.atm.finder.service.CajerosService;
 import com.atm.finder.service.EmployeeService;
-import com.atm.finder.web.form.CreateEmployeeForm;
+import com.atm.finder.web.form.AltaCajeroFormulario;
 
 import lombok.RequiredArgsConstructor;
 
@@ -79,14 +79,14 @@ public class CajerosController {
 		modelAndView.addObject("employees", employees);
 		modelAndView.addObject("gmapsApiKey", gmapsApiKey);
 		modelAndView.addObject("todoslosestatus", Estatus.values());
-		modelAndView.addObject("createEmployeeForm", new CreateEmployeeForm());
+		modelAndView.addObject("createEmployeeForm", new AltaCajeroFormulario());
 		modelAndView.addObject("roles", Role.values());
 		
 		return modelAndView;
 	}
 
 	@PostMapping
-	public ModelAndView createEmployee(@ModelAttribute CreateEmployeeForm employeeForm) {
+	public ModelAndView createEmployee(@ModelAttribute AltaCajeroFormulario employeeForm) {
 		cajeroService.create(employeeForm);
 		return new ModelAndView("redirect:/");
 	}
