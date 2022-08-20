@@ -1,3 +1,4 @@
 INSERT INTO public.cajeros (id, email, first_name, estatus, last_name, password, role, cajero, country, city, street, geo_processed) VALUES
 (1,'dtugdar@evil-inc.com','Dorin','FALLANDO','Tugdar','$2a$10UfZidY.e.miCC','USER','Cajero Axochiapan','USA','Washington','1600 Pennsylvania Ave', false),
-(2,'dtugdar@evil-inc.com','Dorin','FUNCIONANDO','Tugdar','$2a$10UfZidY.e.miCC','USER','Cajero Axochiapan','USA','Washington','1600 Pennsylvania Ave', false);
+(2,'dtugdar@evil-inc.com','Dorin','FUNCIONANDO','Tugdar','$2a$10UfZidY.e.miCC','USER','Cajero Axochiapan','USA','Washington','1600 Pennsylvania Ave', false),
+(2,'dtugdar@evil-inc.com','Dorin','MANTENIMIENTO','Tugdar','$2a$10UfZidY.e.miCC','USER','Cajero Axochiapan','USA','Washington','1600 Pennsylvania Ave', false);

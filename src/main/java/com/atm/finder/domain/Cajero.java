@@ -19,9 +19,22 @@ public class Cajero extends AbstractEntity {
     private String email;
 
     
-    
+    public Cajero() {
+    	
+    }
 
 
+
+	public Cajero(String firstName2, String lastName2, String cajero2, String email2, Direccion direccion, Role role2,
+			Estatus estatus2) {
+			this.firstName = firstName2;
+	        this.lastName = lastName2;
+	        this.cajero = cajero2;
+	        this.email = email2;
+	        this.address = direccion;
+	        this.role = role2;
+	        this.estatus = estatus2;
+	}
 
 	public String getFirstName() {
 		return firstName;

@@ -39,11 +39,12 @@ public class CajerosServiceImpl implements CajerosService{
 	}
 	@Override
 	    public void create(AltaCajeroFormulario form) {
-//	        final Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getUsername(),
-//	                                               form.getEmail(),
-//	                                               new Direccion(form.getStreet(), form.getCity(), form.getCountry()),
-//	                                               form.getRole(), form.getJobPosition());
-//	        cajeroRepository.save(employee);
+	         Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getCajero(),
+	                                               form.getEmail(),
+	                                               new Direccion(form.getStreet(), form.getCity(), form.getCountry()),
+	                                               form.getRole(), form.getEstatus());
+	        
+	        cajeroRepository.save(employee);
 	    }
 	
 	 private void computeAddress(Empleados employee) {
