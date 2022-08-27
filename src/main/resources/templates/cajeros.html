@@ -322,6 +322,9 @@
                             th:text="${employee.estatus}">Precaucion</span>
                     </h5>
                     <p class="card-text" th:text="${employee.firstName + ' ' + employee.lastName}"></p>
+                     <footer class="blockquote-footer">
+                        <small class="text-muted" th:text="${employee.address}"></small>
+                         </footer>
                     <footer class="blockquote-footer">
                         <small class="text-muted" th:text="${employee.email}"></small>
                     </footer>
@@ -334,7 +337,9 @@
                             th:data-role="${employee.role}"
                             type="button"><i
                             class="fas fa-map-marker-alt"></i> <span
-                            th:text="${employee.address.street + ', ' + employee.address.city + ', ' + employee.address.country}"></span>
+                              th:text="${employee.geoLocation.latitude + ', ' + employee.geoLocation.longitude}"></span>
+                         <!--   th:text="${employee.address.street + ', ' + employee.address.city + ', ' + employee.address.country}"></span> -->
+                          
                     </button>
                 </blockquote>
             </div>

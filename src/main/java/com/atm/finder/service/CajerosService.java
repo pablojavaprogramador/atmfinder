@@ -12,6 +12,11 @@ public interface CajerosService {
 
 	  void create(AltaCajeroFormulario form);
 
+	public Cajero BusquedadId(Integer id);
+	public Cajero SalvarCajero(Cajero cajero);
+	public Cajero ActualizarCajero(Cajero cajero);
+	public long numerodeCajeros();
+
 	
 
 }

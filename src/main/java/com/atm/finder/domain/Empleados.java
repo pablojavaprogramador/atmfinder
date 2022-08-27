@@ -14,11 +14,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.ArrayList;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Entity
-@Table(name = "employeesss")
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Entity
+//@Table(name = "employeesss")
 public class Empleados extends AbstractEntity {
     private String firstName;
     private String lastName;
@@ -27,8 +27,6 @@ public class Empleados extends AbstractEntity {
     private String email;
 
     
-    
-
 	public String getFirstName() {
 		return firstName;
 	}

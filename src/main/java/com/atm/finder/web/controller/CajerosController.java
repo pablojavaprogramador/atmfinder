@@ -2,12 +2,10 @@ package com.atm.finder.web.controller;
 
 import com.atm.finder.domain.Cajero;
 import com.atm.finder.domain.Direccion;
-import com.atm.finder.domain.Empleados;
 import com.atm.finder.domain.Geolocalizacion;
 import com.atm.finder.domain.Estatus;
 import com.atm.finder.domain.Role;
 import com.atm.finder.service.CajerosService;
-import com.atm.finder.service.EmployeeService;
 import com.atm.finder.web.form.AltaCajeroFormulario;
 
 import lombok.RequiredArgsConstructor;

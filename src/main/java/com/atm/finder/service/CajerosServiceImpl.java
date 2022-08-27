@@ -14,52 +14,72 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.atm.finder.domain.Cajero;
 import com.atm.finder.domain.Direccion;
-import com.atm.finder.domain.Empleados;
 import com.atm.finder.repository.CajeroRepository;
-import com.atm.finder.repository.EmployeeRepository;
 import com.atm.finder.web.form.AltaCajeroFormulario;
 
 import lombok.RequiredArgsConstructor;
 
-
 @Service
 @RequiredArgsConstructor
-public class CajerosServiceImpl implements CajerosService{
+public class CajerosServiceImpl implements CajerosService {
+	Cajero cajeroRespuesta = null;
 	@Autowired
-	 private final CajeroRepository cajeroRepository = null;
+	private final CajeroRepository cajeroRepository = null;
 	@Autowired
-	 private final GeoLocationService geoLocationService = null;
-	@Override
-    @Transactional
-	public List<Cajero> getAll() {
-	
-		final List<Cajero> cajeros = cajeroRepository.findAll();
-		//cajeros.forEach(this::computeAddress);
-		//cajeros.forEach(computeAddress);
-	        return cajeros;
-	}
-	@Override
-	    public void create(AltaCajeroFormulario form) {
-	        final Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getCajero(),
-	                                               form.getEmail(),
-	                                               new Direccion(form.getStreet(), form.getCity(), form.getCountry()),
-	                                               form.getRole(), form.getEstatus());
-	        if (employee.getAddress() != null && employee.getGeoLocation() == null && !employee.isGeoProcessed()) {
-	            geoLocationService.computeGeoLocation(employee.getAddress().toString())
-	                    .ifPresent(employee::setGeoLocation);
-	            cajeroRepository.save(employee);
-	        }
-	        
-	       
-	    }
-	
-	 private void computeAddress(Empleados employee) {
-	        if (employee.getAddress() != null && employee.getGeoLocation() == null && !employee.isGeoProcessed()) {
-	            geoLocationService.computeGeoLocation(employee.getAddress().toString())
-	                    .ifPresent(employee::setGeoLocation);
-	            employee.setGeoProcessed(true);
-	        }
-	    }
+	private final GeoLocationService geoLocationService = null;
 
-	
+	@Override
+	@Transactional
+	public List<Cajero> getAll() {
+
+		final List<Cajero> cajeros = cajeroRepository.findAll();
+		 cajeros.forEach(this::computeAddress);
+		// cajeros.forEach(computeAddress);
+		return cajeros;
+	}
+
+	@Override
+	public void create(AltaCajeroFormulario form) {
+		final Cajero employee = new Cajero(form.getFirstName(), form.getLastName(), form.getCajero(), form.getEmail(),
+				new Direccion(form.getStreet(), form.getCity(), form.getCountry()), form.getRole(), form.getEstatus());
+		if (employee.getAddress() != null && employee.getGeoLocation() == null && !employee.isGeoProcessed()) {
+			geoLocationService.computeGeoLocation(employee.getAddress().toString()).ifPresent(employee::setGeoLocation);
+			cajeroRepository.save(employee);
+		}
+
+	}
+
+	private void computeAddress(Cajero cajero) {
+		if (cajero.getAddress() != null && cajero.getGeoLocation() == null && !cajero.isGeoProcessed()) {
+			geoLocationService.computeGeoLocation(cajero.getAddress().toString()).ifPresent(cajero::setGeoLocation);
+			cajero.setGeoProcessed(true);
+		}
+	}
+
+	@Override
+	public Cajero BusquedadId(Integer id) {
+		cajeroRespuesta = cajeroRepository.findById(id).get();
+		return cajeroRespuesta;
+	}
+
+	@Override
+	public Cajero SalvarCajero(Cajero cajero) {
+		cajeroRespuesta = cajeroRepository.save(cajero);
+		return cajeroRespuesta;
+	}
+
+	@Override
+	public Cajero ActualizarCajero(Cajero cajero) {
+		cajeroRespuesta = cajeroRepository.save(cajero);
+		
+		return cajeroRespuesta;
+	}
+
+	@Override
+	public long numerodeCajeros() {
+		 long  numeroCajeros =  cajeroRepository.count();
+		 
+		return numeroCajeros;
+	}
+
 }

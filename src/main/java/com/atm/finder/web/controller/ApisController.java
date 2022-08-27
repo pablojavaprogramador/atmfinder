@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import com.atm.finder.domain.Cajero;
 import com.atm.finder.service.CajerosService;
 
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -27,26 +26,35 @@ public class ApisController {
     }
     @RequestMapping(value = "/cajero/{id}", method = RequestMethod.GET)
     Cajero consultaCajero(@PathVariable Integer id){
-    	// return  CajerosService.findById(id).get();
-		return null;
+    	 return  CajerosService.BusquedadId(id);
+		//return null;
        
     }
     
-
     @RequestMapping(produces=MediaType.APPLICATION_JSON_VALUE ,value = "/cajero", method = RequestMethod.POST)
-    public String agregarCajero(@RequestBody Cajero articulo){
-    	//Cajero salvarArticulo = CajerosService.save(articulo);
+    public String agregarCajero(@RequestBody Cajero cajero){
+    	Cajero salvarArticulo = CajerosService.SalvarCajero(cajero);
 
-        return "{\"mensaje\":\"Cajero Guardado Correctamente\"}";
+        return "El Cajero se guardo Correctamente";
+    }
+
+
+    @RequestMapping(value = "/cajero", method = RequestMethod.PUT)
+    Cajero actualizarCajero(@RequestBody Cajero cajero){
+		
+		
+		Cajero actualizarArticulo = CajerosService.ActualizarCajero(cajero);
+
+        return actualizarArticulo;
     }
     
-    @RequestMapping(value = "/cajero", method = RequestMethod.PUT)
-    Cajero actualizarCajero(@RequestBody Cajero articulo){
-		return articulo;
+    @RequestMapping(value = "/totalcajeros", method = RequestMethod.GET)
+    long totalCajeros(){
 		
-    	//Cajero actualizarArticulo = CajerosService.save(articulo);
-       // return actualizarArticulo;
-    //	return articulo;
+		long actualizarArticulo = CajerosService.numerodeCajeros();
+		
+        return actualizarArticulo;
     }
+    
 
 }

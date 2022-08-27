@@ -1,11 +1,14 @@
 package com.atm.finder.domain;
 
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -17,7 +20,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name = "cajeros")
-public class Cajero extends AbstractEntity {
+public class Cajero  {
+	
+	   @Id
+	    @SequenceGenerator(name = "eloc_sequence", sequenceName = "eloc_sequence", initialValue = 1000, allocationSize = 1)
+	    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "eloc_sequence")
+	    private Integer id;
 
 	private String firstName;
     private String lastName;
@@ -26,7 +34,19 @@ public class Cajero extends AbstractEntity {
     private String email;
 
     
-    public Cajero() {
+    public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+
+	public Cajero() {
     	
     }
 
@@ -143,7 +163,7 @@ public class Cajero extends AbstractEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Empleados that = (Empleados) o;
+        Cajero that = (Cajero) o;
         return this.id != null && that.id.equals(this.id);
     }
 
